@@ -178,7 +178,6 @@ prescripto/
 
 ---
 
-## 🔌 API Endpoints
 
 
 ## 🗄️ Database Models
