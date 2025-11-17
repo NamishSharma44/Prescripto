@@ -48,7 +48,7 @@
 | 🔔 React Toastify | 11.0.5 | Toast notifications |
 | 📝 ESLint | 9.36.0 | Code linting |
 
-### 🖥️ Backend
+### 🖥️ Backend( RESTful API Server)
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | 🟢 Node.js + Express | 5.1.0 | Server framework |
