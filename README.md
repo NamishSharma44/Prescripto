@@ -171,12 +171,7 @@ prescripto/
     └── assets_frontend/
 ```
 
----
 
-### 🌐 LIVE PREVIEW: `https://prescripto-frontend-lsea.onrender.com`
--
-
----
 
 
 
@@ -294,18 +289,29 @@ npm run lint       # Run ESLint
 
 ---
 
-## 🌐 Deployment
+## 🌐 Deployment (AWS + CI/CD)
 
-### 🖥️ Backend Deployment
-1. ⚙️ Set up environment variables on your hosting platform
-2. 🍃 Ensure MongoDB connection is accessible
-3. 🌐 Configure CORS for your frontend domains
-4. 🚀 Deploy to platforms like Heroku, Railway, or Render
+### ✅ AWS Services Used
+- 🖥️ **EC2**: Hosts the Node.js backend
+- 🗂️ **S3**: Hosts the Frontend and Admin static builds
+- 🔐 **IAM**: GitHub Actions access to AWS
 
-### 🎨 Frontend & Admin Deployment
-1. 🔧 Update `VITE_BACKEND_URL` to production API URL
-2. 🏗️ Build the project: `npm run build`
-3. 🚀 Deploy the `dist` folder to platforms like Vercel, Netlify, or AWS S3
+### 🔁 CI/CD Flow (Sequential)
+1. ✍️ Make a code change locally
+2. ✅ Commit and push to GitHub
+3. 🤖 GitHub Actions runs automatically
+4. 🚀 Backend deploys to EC2
+5. 📦 Frontend/Admin build and deploy to S3
+6. ✅ The live app updates instantly
+
+### 📸 AWS & CI/CD Screenshots
+![EC2 Instance](docs/screenshots/aws-ec2.png)
+![S3 Buckets](docs/screenshots/aws-s3.png)
+![GitHub Actions Pipeline](docs/screenshots/github-actions.png)
+
+### ⚠️ Free Trial Note
+- This deployment uses an AWS Free Tier account.
+- After the free trial ends or if billing is not enabled, the EC2 public IP may change or become unavailable.
 
 ---
 
