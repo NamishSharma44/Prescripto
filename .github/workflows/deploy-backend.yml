@@ -1,6 +1,8 @@
 name: Deploy Backend to EC2
 
 on:
+  workflow_dispatch:
+
   push:
     branches: [ "main" ] # change this to your default branch branch if it's "master"
     paths:
@@ -8,7 +10,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:
+  workflow_dispatch:
+ ubuntu-latest
     steps:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.0
