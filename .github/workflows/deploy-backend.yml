@@ -1,18 +1,15 @@
 name: Deploy Backend to EC2
 
 on:
-  workflow_dispatch:
-
   push:
-    branches: [ "main" ] # change this to your default branch branch if it's "master"
+    branches: [ "main" ]
     paths:
       - 'backend/**'
+  workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on:
-  workflow_dispatch:
- ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.0
@@ -21,7 +18,6 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Replace 'pres' with the exact name of the folder you cloned on the EC2 instance
             cd ~/Prescripto/backend
             git pull origin main
             npm install
