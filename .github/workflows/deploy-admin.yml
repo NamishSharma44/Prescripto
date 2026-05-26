@@ -3,8 +3,8 @@ name: Deploy Admin to S3
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'admin/**'
+#    paths:
+#      - 'admin/**'
   workflow_dispatch:
 
 jobs:
