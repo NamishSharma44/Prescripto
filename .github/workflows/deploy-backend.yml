@@ -1,0 +1,24 @@
+name: Deploy Backend to EC2
+
+on:
+  push:
+    branches: [ "main" ] # change this to your default branch branch if it's "master"
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # Replace 'pres' with the exact name of the folder you cloned on the EC2 instance
+            cd ~/Prescripto/backend
+            git pull origin main
+            npm install
+            pm2 restart pres-backend

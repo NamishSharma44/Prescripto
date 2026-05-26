@@ -28,20 +28,27 @@ const appointment = () => {
 
     let today = new Date()
     for (let i = 0; i < 7; i++) {
+      // Create date for each of next 7 days
       let currentDate = new Date(today)
       currentDate.setDate(today.getDate() + i)
+      // Set end time to 9 PM
       let endTime = new Date()
       endTime.setDate(today.getDate() + i)
       endTime.setHours(21, 0, 0, 0)
+      // Set start time
       if (today.getDate() === currentDate.getDate()) {
+        // Today: Start from next hour or 10 AM, whichever is later
         currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10)
         currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0)
       }
       else {
+        // Future days: Start at 10 AM
+
         currentDate.setHours(10)
         currentDate.setMinutes(0)
       }
       let timeSlots = []
+      // Generate 30-minute slots
       while (currentDate < endTime) {
         let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
@@ -49,9 +56,10 @@ const appointment = () => {
         let day = currentDate.getDate()
         let month = currentDate.getMonth() + 1
         let year = currentDate.getFullYear()
-
+        // Format date as day_month_year
         const slotDate = day + "_" + month + "_" + year
         const slotTime = formattedTime
+        // Check if slot is already booked
         const isSlotAvailable = docInfo.slots_booked[slotDate] &&  docInfo.slots_booked[slotDate].includes(slotTime) ? false : true
 
         if(isSlotAvailable){
@@ -62,7 +70,7 @@ const appointment = () => {
         }
 
         
-
+        // Move to next 30-minute slot
         currentDate.setMinutes(currentDate.getMinutes() + 30)
       }
       setDocSlots(prev => ([...prev, timeSlots]))
