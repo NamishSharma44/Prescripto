@@ -19,7 +19,6 @@ jobs:
       - name: Build Admin
         working-directory: ./admin
         run: |
-          echo "VITE_BACKEND_URL=http://51.20.87.168:4000" > .env
           npm install
           npm run build
       - name: Configure AWS Credentials
