@@ -33,5 +33,4 @@ jobs:
           
       - name: Deploy to S3
         working-directory: ./admin
-        # IMPORTANT: Replace YOUR_ADMIN_BUCKET_NAME below
-        run: aws s3 sync ./dist s3://my-pres-admin --delete
+        run: aws s3 sync ./dist s3://my-pres-admin --region eu-north-1 --delete
